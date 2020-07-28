@@ -96,7 +96,7 @@ public class Tracker {
     }
 
     /**
-     *  метод, который будет возвращать index по id
+     * метод, который будет возвращать index по id
      */
     private int indexOf(int id) {
         int rsl = -1;
@@ -118,7 +118,8 @@ public class Tracker {
         boolean rsl = false;
         int indexFound = this.indexOf(id);
         if (indexFound != -1) {
-            this.items[indexFound].setName(item.getName());
+            this.items[indexFound] = item;
+            this.items[indexFound].setId(id);
             rsl = true;
         }
         return rsl;
@@ -130,11 +131,11 @@ public class Tracker {
      * мМетод delete возвращает true, если заявление удалено
      * или false, если index не найдет по id.
      */
-    public Boolean delete(int id) {
+    public boolean delete(int id) {
         boolean rsl = false;
         int indexFound = this.indexOf(id);
         if (indexFound != -1) {
-            int lng = (this.size - 1- indexFound);
+            int lng = (this.size - 1 - indexFound);
             System.arraycopy(this.items, indexFound + 1, this.items, indexFound, lng);
             this.items[indexFound + lng] = null;
             this.size--;
