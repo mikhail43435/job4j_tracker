@@ -4,11 +4,11 @@ public class StartUI {
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
         Item item1 = new Item();
-        item1.setNameAndId("Item 312131", 232);
+        item1.setName("Item 312131");
         Item item2 = new Item();
-        item2.setNameAndId("Item 2342", 2);
+        item2.setName("Item 2342");
         Item item3 = new Item();
-        item3.setNameAndId("Item 36786754634", 32);
+        item3.setName("Item 36786754634");
         tracker.add(item1);
         tracker.add(item2);
         tracker.add(item3);

@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 
 public class Tracker {
-    private final Item[] items = new Item[100];
+    private final Item[] items = new Item[5];
     private int ids = 1;
     private int size = 0;
     private int length;
@@ -101,7 +101,7 @@ public class Tracker {
     private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < this.size; index++) {
-            if (items[index].getId() == id) {
+            if (this.items[index].getId() == id) {
                 rsl = index;
                 break;
             }
@@ -120,9 +120,27 @@ public class Tracker {
         if (indexFound != -1) {
             this.items[indexFound].setName(item.getName());
             rsl = true;
-        } else {
-            System.out.println("Заявка для замены с индексом [" + id + "] не найдена");
         }
         return rsl;
     }
+
+    /**
+     * метод Tracker.delete, используя indexOf
+     * причем вызов indexOf должен быть один.
+     * мМетод delete возвращает true, если заявление удалено
+     * или false, если index не найдет по id.
+     */
+    public Boolean delete(int id) {
+        boolean rsl = false;
+        int indexFound = this.indexOf(id);
+        if (indexFound != -1) {
+            int lng = (this.size - 1- indexFound);
+            System.arraycopy(this.items, indexFound + 1, this.items, indexFound, lng);
+            this.items[indexFound + lng] = null;
+            this.size--;
+            rsl = true;
+        }
+        return rsl;
+    }
+
 }
