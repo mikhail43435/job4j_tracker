@@ -19,12 +19,13 @@ public class Tracker {
         items[size++] = item;
         return item;
     }
+
     /**
      * проверяет в цикле все элементы массива items,
      * сравнивая id с аргументом int id
      * и возвращает найденный Item.
      * Если Item не найден - возвращает null.
-    */
+     */
     public Item findById(int id) {
         Item rsl = null;
         for (int index = 0; index < size; index++) {
@@ -49,8 +50,7 @@ public class Tracker {
                 size++;
             }
         }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        return itemsWithoutNull;
+        return Arrays.copyOf(itemsWithoutNull, size);
     }
 
     /**
@@ -63,13 +63,11 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] itemsWithSameName = new Item[items.length];
         int size = 0;
-        for (Item item : items) {
-            if (item != null) {
-                String itemName = item.getName();
-                if (itemName.equals(key)) {
-                    itemsWithSameName[size] = item;
-                    size++;
-                }
+        for (int index = 0; index < this.size; index++) {
+            //String itemName = item[index].getName();
+            if (items[index].getName().equals(key)) {
+                itemsWithSameName[size] = items[index];
+                size++;
             }
         }
         itemsWithSameName = Arrays.copyOf(itemsWithSameName, size);
@@ -87,13 +85,13 @@ public class Tracker {
     }
 
     /**
-     * метод выводит в консоль переданный объект item
+     * метод выводит в консоль переданный объект массив items
      */
     public void printItems(Item[] items) {
         if (items != null) {
             System.out.println("======= Printing items array");
-            for (int index = 0; index < items.length ; index++) {
-            System.out.println("Item № " + (index + 1) + "     item name: " + items[index].getName() + "   item id: " + items[index].getId());
+            for (int index = 0; index < items.length; index++) {
+                System.out.println("Item № " + (index + 1) + "     item name: " + items[index].getName() + "   item id: " + items[index].getId());
             }
         } else
             System.out.println("Can't print null object!");
