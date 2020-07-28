@@ -36,15 +36,7 @@ public class Tracker {
      * возвращает копию массива items без null элементов (без пустых ячеек)
      */
     public Item[] findAll(Item[] items) {
-        Item[] itemsWithoutNull = new Item[items.length];
-        int size = 0;
-        for (Item item : items) {
-            if (item.getName() != null) {
-                itemsWithoutNull[size] = item;
-                size++;
-            }
-        }
-        return Arrays.copyOf(itemsWithoutNull, size);
+        return Arrays.copyOf(items, size);
     }
 
     /**
