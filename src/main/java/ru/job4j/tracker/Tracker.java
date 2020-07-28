@@ -6,6 +6,7 @@ public class Tracker {
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
+    private int length;
 
     /**
      * метод добавляет заявку, переданную в аргументах в массив заявок items
@@ -27,15 +28,8 @@ public class Tracker {
      * Если Item не найден - возвращает null.
      */
     public Item findById(int id) {
-        Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
+        int index = indexOf(id);
+        return index != -1 ? items[index] : null;
     }
 
     /**
@@ -95,5 +89,48 @@ public class Tracker {
             }
         } else
             System.out.println("Can't print null object!");
+    }
+
+    /**
+     * метод выводит в консоль все содержимое трекера
+     */
+    public void printAllTracker(Tracker tracker) {
+        System.out.println("======= Printing all tracker");
+        for (int index = 0; index < tracker.size; index++) {
+            System.out.println("Item № " + (index + 1)
+                    + "     item name: " + this.items[index].getName()
+                    + "   item id: " + this.items[index].getId());
+        }
+    }
+
+    /**
+     *  метод, который будет возвращать index по id
+     */
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < this.size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /**
+     * метод замены заявки.
+     * удаляем заявку, которая уже есть в системе
+     * и добавляем в эту ячейку новую.
+     */
+    public Boolean replace(int id, Item item) {
+        boolean rsl = false;
+        int indexFound = this.indexOf(id);
+        if (indexFound != -1) {
+            this.items[indexFound].setName(item.getName());
+            rsl = true;
+        } else {
+            System.out.println("Заявка для замены с индексом [" + id + "] не найдена");
+        }
+        return rsl;
     }
 }
