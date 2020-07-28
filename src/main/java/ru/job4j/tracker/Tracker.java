@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 
 public class Tracker {
-    private final Item[] items = new Item[5];
+    private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
     private int length;
@@ -75,7 +75,6 @@ public class Tracker {
      */
     public void printItems(Item[] items) {
         if (items != null) {
-            System.out.println("======= Printing items array");
             for (int index = 0; index < items.length; index++) {
                 System.out.println("Item № " + (index + 1) + "     item name: " + items[index].getName() + "   item id: " + items[index].getId());
             }
@@ -87,11 +86,13 @@ public class Tracker {
      * метод выводит в консоль все содержимое трекера
      */
     public void printAllTracker(Tracker tracker) {
-        System.out.println("======= Printing all tracker");
         for (int index = 0; index < tracker.size; index++) {
             System.out.println("Item № " + (index + 1)
                     + "     item name: " + this.items[index].getName()
-                    + "   item id: " + this.items[index].getId());
+                    + "     item id: " + this.items[index].getId());
+        }
+        if (tracker.size == 0) {
+            System.out.println(">>> tracker is empty <<<");
         }
     }
 
