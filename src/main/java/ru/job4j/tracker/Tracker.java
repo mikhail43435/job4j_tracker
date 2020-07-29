@@ -39,6 +39,12 @@ public class Tracker {
         return Arrays.copyOf(items, size);
     }
 
+    /**
+     * возвращает копию массива items без null элементов (без пустых ячеек)
+     */
+    public Item[] findAll() {
+        return Arrays.copyOf(this.items, this.size);
+    }
 
     /**
      * возвращает копию массива items без null элементов (без пустых ячеек)
