@@ -39,6 +39,14 @@ public class Tracker {
         return Arrays.copyOf(items, size);
     }
 
+
+    /**
+     * возвращает копию массива items без null элементов (без пустых ячеек)
+     */
+    public Item[] findAllItemsInTracker(Tracker tracker) {
+        return Arrays.copyOf(tracker.items, tracker.size);
+    }
+
     /**
      * проверяет в цикле все элементы массива items,
      * сравнивая name (используя метод getName класса Item)
@@ -60,41 +68,6 @@ public class Tracker {
         return itemsWithSameName;
     }
 
-    /**
-     * метод выводит в консоль переданный объект item
-     */
-    public void printItem(Item item) {
-        if (item != null) {
-            System.out.println("Item name: " + item.getName() + "   item id: " + item.getId());
-        } else
-            System.out.println("Can't print null object!");
-    }
-
-    /**
-     * метод выводит в консоль переданный объект массив items
-     */
-    public void printItems(Item[] items) {
-        if (items != null) {
-            for (int index = 0; index < items.length; index++) {
-                System.out.println("Item № " + (index + 1) + "     item name: " + items[index].getName() + "   item id: " + items[index].getId());
-            }
-        } else
-            System.out.println("Can't print null object!");
-    }
-
-    /**
-     * метод выводит в консоль все содержимое трекера
-     */
-    public void printAllTracker(Tracker tracker) {
-        for (int index = 0; index < tracker.size; index++) {
-            System.out.println("Item № " + (index + 1)
-                    + "     item name: " + this.items[index].getName()
-                    + "     item id: " + this.items[index].getId());
-        }
-        if (tracker.size == 0) {
-            System.out.println(">>> tracker is empty <<<");
-        }
-    }
 
     /**
      * метод, который будет возвращать index по id
@@ -145,4 +118,14 @@ public class Tracker {
         return rsl;
     }
 
+
+    @Override
+    public String toString() {
+        return "Tracker{" +
+                "items=" + Arrays.toString(items) +
+                ", ids=" + ids +
+                ", size=" + size +
+                ", length=" + length +
+                '}';
+    }
 }

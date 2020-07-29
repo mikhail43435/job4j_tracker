@@ -19,7 +19,15 @@ public class StartUI {
                 tracker.add(item);
             } else if (select == 1) {
                 System.out.println("=== Printing all item's list ====");
-                tracker.printAllTracker(tracker);
+                //tracker.printAllTracker(tracker);
+                Item[] items = tracker.findAllItemsInTracker(tracker);
+/*                for (int i = 0; i < items.length; i++) {
+                    System.out.println(items[i]);
+                }*/
+                this.printItems(items);
+
+
+
             } else if (select == 2) {
                 System.out.println("=== Editing item ====");
                 System.out.print("Enter item's id to edit: ");
@@ -49,7 +57,7 @@ public class StartUI {
                 Item item = tracker.findById(id);
                 if (item != null) {
                     System.out.println("Item with id [" + id + "] has been successfully found");
-                    tracker.printItem(item);
+                    this.printItem(item);
                 } else {
                     System.out.println("Error. Item with id [" + id + "] not found");
                 }
@@ -61,7 +69,7 @@ public class StartUI {
                 if (items.length != 0) {
                     System.out.println("Item(s) with name [" + name + "] is(are) successfully found");
                     System.out.println("Printing founded items...");
-                    tracker.printItems(items);
+                    this.printItems(items);
                 } else {
                     System.out.println("Error. Item with name [" + name + "] not found");
                 }
@@ -91,6 +99,30 @@ public class StartUI {
         Scanner scanner = new Scanner(System.in);
         Tracker tracker = new Tracker();
         new StartUI().init(scanner, tracker);
+    }
+
+
+    /**
+     * метод выводит в консоль переданный объект item
+     */
+    public void printItem(Item item) {
+        if (item != null) {
+            System.out.println("Item name: " + item.getName() + "   item id: " + item.getId());
+        } else
+            System.out.println("Can't print null object!");
+    }
+
+
+    /**
+     * метод выводит в консоль переданный объект массив items
+     */
+    public void printItems(Item[] items) {
+        if (items != null) {
+            for (int index = 0; index < items.length; index++) {
+                System.out.println("Item № " + (index + 1) + "     item name: " + items[index].getName() + "   item id: " + items[index].getId());
+            }
+        } else
+            System.out.println("Can't print null object!");
     }
 }
 
