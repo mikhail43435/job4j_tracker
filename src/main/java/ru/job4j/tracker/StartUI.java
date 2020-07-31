@@ -22,12 +22,12 @@ public class StartUI {
 
     public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Editing item ====");
-        int id = Integer.parseInt(input.askStr("Enter item's id to edit: "));
+        int id = Integer.parseInt(input.askStr("Enter the id io the item to edit it: "));
         String name = input.askStr("Enter item's new name: ");
         Item item = new Item();
         item.setName(name);
         if (tracker.replace(id, item)) {
-            System.out.println("Item with id " + id + " successfully replaced");
+            System.out.println("Item with id " + id + " has been replaced successfully");
         } else {
             System.out.println("Error. Item for replacing with id [" + id + "] not found");
         }
@@ -48,10 +48,10 @@ public class StartUI {
         int id = Integer.parseInt(input.askStr("Enter item's id for search: "));
         Item item = tracker.findById(id);
         if (item != null) {
-            System.out.println("Item with id [" + id + "] has been successfully found");
+            System.out.println("Item with id [" + id + "] has been found successfully");
             System.out.println(item);
         } else {
-            System.out.println("Error. Item with id [" + id + "] not found");
+            System.out.println("Error. Item with id [" + id + "] has not been found");
         }
     }
 
@@ -60,14 +60,14 @@ public class StartUI {
         String name = input.askStr("Enter item's name for search: ");
         Item[] items = tracker.findByName(name);
         if (items.length != 0) {
-            System.out.println("Item(s) with name [" + name + "] is(are) successfully found");
-            System.out.println("Printing founded items...");
+            System.out.println("Item(s) with name [" + name + "] has been found successfully");
+            System.out.println("Printing found items...");
             for (int i = 0; i < items.length; i++) {
                 System.out.println(items[i]);
             }
 
         } else {
-            System.out.println("Error. Item with name [" + name + "] not found");
+            System.out.println("Error. Item with name [" + name + "] has not been found");
         }
     }
 
