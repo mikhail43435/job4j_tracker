@@ -1,11 +1,12 @@
 package ru.job4j.tracker;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 
 public class StartUITest {
 
@@ -24,31 +25,32 @@ public class StartUITest {
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
 
-    /*@Test
+    @Test
     public void whenReplaceItem() {
+        Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        *//* Добавим в tracker новую заявку *//*
         Item item = tracker.add(new Item("Replaced item"));
-        *//* Входные данные должны содержать ID добавленной заявки item.getId() *//*
-        String replacedName = "<Item{id=1, name='New item name'}>";
+        //String replacedName = "<Item{id=1, name='New item name'}>";
+        String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0" , "1", "New item name", "1"}
+                new String[]{"0", "1", "New item name", "1"}
         );
         UserAction[] actions = {
-                new EditItemAction(),
-                new ExitConsoleAction()
+                new EditItemAction(out),
+                new ExitConsoleAction(out)
         };
-        new StartUI().init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(replacedName));
-    }*/
+        new StartUI(out).init(in, tracker, actions);
+        //assertThat(tracker.findById(item.getId()), is(replacedName));
+
+        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+        //assertThat(out.toString(), is(replacedName));
+    }
 
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        /* Добавим в tracker новую заявку */
         Item item = tracker.add(new Item("Deleted item"));
-        /* Входные данные должны содержать ID добавленной заявки item.getId() */
         Input in = new StubInput(
                 new String[] {"0", "1" , "1"}
         );
@@ -59,6 +61,48 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
+/*
+    @Test
+    public void whenFindBYId() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("Item 1"));
+        tracker.add(new Item("Item 2"));
+        Input in = new StubInput(
+                new String[] {"0", "1" , "1"}
+        );
+        UserAction[] actions = {
+                new DeleteItemAction(out),
+                new ExitConsoleAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(tracker.findById(item.getId()), is(nullValue()));
+    }*/
+
+/*
+    @Test
+    public void whenFindAll() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("Item 1"));
+        tracker.add(new Item("Item 2"));
+
+        Item[] items = new Item[2];
+
+        Item newItem1 = new Item();
+        newItem1.setId(1);
+        newItem1.setName("Item 1");
+        items[0] = newItem1;
+
+        Item newItem2 = new Item();
+        newItem2.setId(2);
+        newItem2.setName("Item 2");
+        items[1] = newItem2;
+
+        assertArrayEquals(tracker.findAll(), items);
+    }
+*/
+
 
     @Test
     public void whenExit() {

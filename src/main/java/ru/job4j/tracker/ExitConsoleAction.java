@@ -14,7 +14,7 @@ public class ExitConsoleAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        out.println("Console is closed");
+        //out.println("Console is closed");
         return false;
     }
 }
