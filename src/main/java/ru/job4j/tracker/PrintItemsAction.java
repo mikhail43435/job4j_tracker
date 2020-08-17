@@ -18,7 +18,7 @@ public class PrintItemsAction implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         //System.out.println("");
         //ArrayList<Item> items = tracker.findAll();
-        for (Item value : tracker.findAll(tracker)) {
+        for (Item value : tracker.findAll()) {
             out.println(value);
         }
         return true;
