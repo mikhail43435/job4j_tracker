@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Tracker {
     //private final Item[] items = new Item[100];
@@ -154,5 +155,13 @@ public class Tracker {
                 ", size=" + size +
                 //", length=" + length +
                 '}';
+    }
+
+    public void sort(boolean ascending) {
+        if (ascending) {
+            items.sort(new SortByNameItemAscending());
+        } else {
+            items.sort(new SortByNameItemDescending());
+        }
     }
 }
