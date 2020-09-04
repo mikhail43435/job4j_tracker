@@ -3,10 +3,6 @@ language: java
 jdk:
  - openjdk14
 
- env:
-   global:
-     - CODECOV_TOKEN="dfd8d962-6ac0-4477-bbdc-def3a5fea72a"
-
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
@@ -22,3 +18,7 @@ notifications:
       -hommp2009@mail.ru
     on_success: never # default: change
     on_failure: always # defa,ult: always
+
+env:
+   global:
+     - CODECOV_TOKEN="dfd8d962-6ac0-4477-bbdc-def3a5fea72a"
