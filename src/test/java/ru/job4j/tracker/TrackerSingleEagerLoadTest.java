@@ -13,6 +13,6 @@ public class TrackerSingleEagerLoadTest {
     public void thenEagerLoad() {
         TrackerSingleEagerLoad tracker1 = TrackerSingleEagerLoad.INSTANCE;
         TrackerSingleEagerLoad tracker2 = TrackerSingleEagerLoad.INSTANCE;
-        assertThat(tracker1, is(tracker2));
+        assertThat(tracker1.getTracker(), is(tracker2.getTracker()));
     }
 }

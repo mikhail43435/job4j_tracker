@@ -10,6 +10,6 @@ public class TrackerSingleLazyLoadTest {
     public void thenLazyLoad() {
         TrackerSingleLazyLoad tracker1 =  TrackerSingleLazyLoad.getInstance();
         TrackerSingleLazyLoad tracker2 = TrackerSingleLazyLoad.getInstance();
-        assertThat(tracker1, is(tracker2));
+        assertThat(tracker1.getTracker(), is(tracker2.getTracker()));
     }
 }

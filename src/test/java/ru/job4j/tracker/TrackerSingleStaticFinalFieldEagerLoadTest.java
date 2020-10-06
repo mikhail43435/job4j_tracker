@@ -10,6 +10,6 @@ public class TrackerSingleStaticFinalFieldEagerLoadTest {
     public void StaticFinalFieldEagerLoad() {
         TrackerSingleStaticFinalFieldEagerLoad tracker1 =  TrackerSingleStaticFinalFieldEagerLoad.getInstance();
         TrackerSingleStaticFinalFieldEagerLoad tracker2 = TrackerSingleStaticFinalFieldEagerLoad.getInstance();
-        assertThat(tracker1, is(tracker2));
+        assertThat(tracker1.getTracker(), is(tracker2.getTracker()));
     }
 }

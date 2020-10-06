@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 public class TrackerSinglePrivateStaticFinalClassLazyLoad {
     private static final TrackerSinglePrivateStaticFinalClassLazyLoad INSTANCE = new TrackerSinglePrivateStaticFinalClassLazyLoad();
+    private Tracker tracker;
 
     private TrackerSinglePrivateStaticFinalClassLazyLoad() {
     }
@@ -21,4 +22,9 @@ public class TrackerSinglePrivateStaticFinalClassLazyLoad {
     public static void main(String[] args) {
         TrackerSinglePrivateStaticFinalClassLazyLoad tracker = TrackerSinglePrivateStaticFinalClassLazyLoad.getInstance();
     }
+
+    public Tracker getTracker() {
+        return tracker;
+    }
+
 }

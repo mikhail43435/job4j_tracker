@@ -10,6 +10,6 @@ public class TrackerSinglePrivateStaticFinalClassLazyLoadTest {
     public void StaticFinalFieldEagerLoad() {
         TrackerSinglePrivateStaticFinalClassLazyLoad tracker1 =  TrackerSinglePrivateStaticFinalClassLazyLoad.getInstance();
         TrackerSinglePrivateStaticFinalClassLazyLoad tracker2 = TrackerSinglePrivateStaticFinalClassLazyLoad.getInstance();
-        assertThat(tracker1, is(tracker2));
+        assertThat(tracker1.getTracker(), is(tracker2.getTracker()));
     }
 }
