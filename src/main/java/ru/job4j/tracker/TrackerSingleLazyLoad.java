@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class TrackerSingleLazyLoad {
     private static TrackerSingleLazyLoad instance;
-    private Tracker tracker;
+    private static Tracker tracker;
 
     private TrackerSingleLazyLoad() {
     }
@@ -10,6 +10,7 @@ public class TrackerSingleLazyLoad {
     public static TrackerSingleLazyLoad getInstance() {
         if (instance == null) {
             instance = new TrackerSingleLazyLoad();
+            tracker = new Tracker();
         }
         return instance;
     }

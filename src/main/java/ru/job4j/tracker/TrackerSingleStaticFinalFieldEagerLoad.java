@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class TrackerSingleStaticFinalFieldEagerLoad {
     private static final TrackerSingleStaticFinalFieldEagerLoad INSTANCE = new TrackerSingleStaticFinalFieldEagerLoad();
-    private Tracker tracker;
+    private Tracker tracker = new Tracker();
 
     private TrackerSingleStaticFinalFieldEagerLoad() {
     }
