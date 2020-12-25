@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 //import java.util.Scanner;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class StartUI {
     private final Output out;
@@ -49,6 +48,8 @@ public class StartUI {
         actions.add(new SearchItemByIdAction(output));
         actions.add(new SearchItemByNameAction(output));
         actions.add(new ExitConsoleAction(output));
+
+        System.out.println(StartUI.class.getClassLoader());
 
 /*        UserAction[] actions = {
                 new CreateAction(output),
