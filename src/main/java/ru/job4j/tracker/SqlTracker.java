@@ -14,6 +14,10 @@ import static java.util.Objects.nonNull;
 public class SqlTracker implements Store {
     private Connection connection;
 
+    public SqlTracker(Connection connection) {
+        this.connection = connection;
+    }
+
     public SqlTracker() {
         init();
     }
@@ -52,9 +56,15 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         try (PreparedStatement statement =
-                     connection.prepareStatement("insert into items(name) values (?);")) {
+                     connection.prepareStatement("insert into items(name) values (?);",
+                             Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
-            statement.execute();
+            statement.executeUpdate();
+            ResultSet rs = statement.getGeneratedKeys();
+            if (rs.next()){
+                System.out.println("ID set: " + rs.getInt(1));
+                item.setId(rs.getInt(1));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -137,12 +147,12 @@ public class SqlTracker implements Store {
                      connection.prepareStatement("select * from items where id=?;")) {
             statement.setInt(1, Integer.parseInt(id));
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                         item = new Item(resultSet.getInt("id"),
                                 resultSet.getString("name"));
                     }
-                } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
         return item;
