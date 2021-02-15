@@ -4,7 +4,8 @@ import ru.job4j.tracker.models.Item;
 import ru.job4j.tracker.MemTracker;
 
 public class TrackerSingleStaticFinalFieldEagerLoad {
-    private static final TrackerSingleStaticFinalFieldEagerLoad INSTANCE = new TrackerSingleStaticFinalFieldEagerLoad();
+    private static final TrackerSingleStaticFinalFieldEagerLoad INSTANCE =
+            new TrackerSingleStaticFinalFieldEagerLoad();
     private MemTracker memTracker = new MemTracker();
 
     private TrackerSingleStaticFinalFieldEagerLoad() {

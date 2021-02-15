@@ -24,7 +24,7 @@ public class SearchItemByNameAction implements UserAction {
     public boolean execute(Input input, Store tracker) {
         String name = input.askStr("Enter item's name for search: ");
         List<Item> items = tracker.findByName(name);
-        if (items.size() != 0) {
+        if (!items.isEmpty()) {
             out.println("Item(s) with name [" + name + "] has been found successfully");
             out.println("Printing found items...");
             for (Item value : items) {

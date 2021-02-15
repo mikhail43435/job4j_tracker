@@ -141,7 +141,8 @@ public class StartUITest {
                 "Menu." + System.lineSeparator()
                         + "0. Searching item by name" + System.lineSeparator()
                         + "1. Console close" + System.lineSeparator()
-                        + "Item(s) with name [Item 1] has been found successfully" + System.lineSeparator()
+                        + "Item(s) with name [Item 1] has been found successfully"
+                        + System.lineSeparator()
                         + "Printing found items..." + System.lineSeparator()
                         + "Item{id=1, name='Item 1'}" + System.lineSeparator()
                         + "Menu." + System.lineSeparator()
