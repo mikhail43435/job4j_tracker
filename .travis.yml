@@ -3,8 +3,14 @@ language: java
 jdk:
  - openjdk14
 
+ services:
+ - postgresql
+
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
+
+before_install:
+- psql -c 'create database tracker;' -U postgres
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
@@ -17,7 +23,7 @@ notifications:
     recipients:
       -hommp2009@mail.ru
     on_success: never # default: change
-    on_failure: always # defa,ult: always
+    on_failure: always # default: always
 
 env:
    global:
