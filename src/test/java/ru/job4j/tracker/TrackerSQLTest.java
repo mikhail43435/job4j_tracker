@@ -77,22 +77,8 @@ public class TrackerSQLTest {
 
     @Test
     public void findAllTest() throws Exception {
-        int rows = -1;
-        try (Connection connection =
-                     ConnectionRollback.create(this.init());
-             PreparedStatement statement =
-                     connection.prepareStatement("select * from items;",
-                             ResultSet.TYPE_SCROLL_SENSITIVE,
-                             ResultSet.CONCUR_UPDATABLE)) {
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.last()) {
-                rows = resultSet.getRow();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            assertThat(tracker.findAll().size(), is(rows));
+            assertThat(tracker.findAll().size(), is(5));
         }
     }
 }
