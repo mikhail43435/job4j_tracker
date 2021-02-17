@@ -66,7 +66,7 @@
             </properties>
         </profile>
     </profiles>
-df    <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
