@@ -78,7 +78,10 @@ public class TrackerSQLTest {
     @Test
     public void findAllTest() throws Exception {
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
-            assertThat(tracker.findAll().size(), is(5));
+            tracker.add(new Item("1"));
+            tracker.add(new Item("2"));
+            tracker.add(new Item("3"));
+            assertThat(tracker.findAll().size(), is(3));
         }
     }
 }
