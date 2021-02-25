@@ -1,4 +1,1 @@
-CREATE TABLE IF NOT EXISTS items(
-    id serial primary key,
-    name varchar(255)
-);
+INSERT INTO items(name) values ('"value 1');

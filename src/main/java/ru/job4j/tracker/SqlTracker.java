@@ -33,15 +33,7 @@ public class SqlTracker implements Store {
                     config.getProperty("username"),
                     config.getProperty("password")
             );
-            try (Statement statement = connection.createStatement()) {
-                String sql = String.format(
-                        "create table if not exists items(%s, %s);",
-                        "id serial primary key",
-                        "name varchar(255)"
-                );
-                statement.execute(sql);
-            }
-        } catch (Exception e) {
+         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
     }
