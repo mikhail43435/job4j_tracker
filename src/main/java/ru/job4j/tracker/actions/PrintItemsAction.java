@@ -24,6 +24,11 @@ public class PrintItemsAction implements UserAction {
     public boolean execute(Input input, Store memTracker) {
         List<Item> items = memTracker.findAll();
         items.sort(new SortByNameItemAscendingID());
+        if (items.size() == 0) {
+            System.out.println("Nothing to print. Database is empty.");
+            return true;
+        }
+        System.out.println("=== Show all items ===");
         for (Item value : items) {
             out.println(value);
         }
