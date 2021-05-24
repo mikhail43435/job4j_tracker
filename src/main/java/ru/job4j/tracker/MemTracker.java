@@ -27,6 +27,7 @@ public class MemTracker implements Store {
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
+        System.out.println("Добавленная заявка: " + item);
         return item;
     }
 
